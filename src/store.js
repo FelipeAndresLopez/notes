@@ -2,8 +2,8 @@
 import { initNotes, noteReducer } from './reducers/noteReducer';
 import { filterReducer } from './reducers/filterReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { getAll } from './services/notes';
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from 'redux-thunk';
 
 const reducer = combineReducers({
     notes: noteReducer,
@@ -12,10 +12,8 @@ const reducer = combineReducers({
 
 export const store = createStore(
     reducer,
-    composeWithDevTools()
+    composeWithDevTools(
+        applyMiddleware(thunk)
+    )
 );
-
-getAll().then(notes => {
-    store.dispatch(initNotes(notes))
-})
 

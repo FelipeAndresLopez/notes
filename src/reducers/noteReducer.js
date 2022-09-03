@@ -1,3 +1,4 @@
+import { createNewNote, getAll } from "../services/notes"
 
 
 export const noteReducer = (state = [], action) => {
@@ -27,17 +28,15 @@ export const noteReducer = (state = [], action) => {
     return state
 }
 
-const genetareId = () => Math.floor(Math.random() * 99999999) + 1
-
 export const createNote = (content) => {
 
-    return {
-        type: '@notes/created',
-        payload: {
-            content,
-            important: false,
-            id: genetareId()
-        }
+    return async (dispatch) => {
+
+        const newNote = await createNewNote(content)
+        dispatch({
+            type: '@notes/created',
+            payload: newNote
+        })
     }
 }
 
@@ -52,9 +51,13 @@ export const toggleImportanceOf = (id) => {
     }
 }
 
-export const initNotes = (notes) => {
-    return {
-        type: '@notes/init',
-        payload: notes
+export const initNotes = () => {
+    return async (dispatch) => {
+        const notes = await getAll()
+        dispatch({
+            type: '@notes/init',
+            payload: notes
+        })
     }
+
 }

@@ -1,12 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { createNote } from '../reducers/noteReducer';
+import { createNewNote } from '../services/notes';
 
 const NewNote = () => {
 
     const dispatch = useDispatch()
 
-    const addNote = (evt) => {
+    const addNote = async (evt) => {
         evt.preventDefault()
         const { target } = evt;
         const content = target.note.value
