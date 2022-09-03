@@ -1,0 +1,19 @@
+{
+    "notes": [
+        {
+            "content": "Gracias por seguir aprendiendo Felipe, eso me mantiene saludable. Att Tu Cerebro",
+            "importance": true,
+            "id": 0
+        },
+        {
+            "content": "Recuerda practicar todo lo que aprendes",
+            "importance": false,
+            "id": 1
+        },
+        {
+            "content": "Y nunca te rindas",
+            "importance": false,
+            "id": 2
+        }
+    ]
+}
